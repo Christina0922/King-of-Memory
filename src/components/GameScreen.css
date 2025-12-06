@@ -1,0 +1,140 @@
+.game-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+}
+
+.game-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: transparent;
+  color: #4a90e2;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background: #f0f0f0;
+}
+
+.game-title {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.header-spacer {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.game-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* 상단: 점수 영역 - flex-grow로 자동 비율 */
+.top-section {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+}
+
+/* 중간: 게임 디스플레이 및 컨트롤 - flex-grow로 자동 비율 */
+.middle-section {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+}
+
+/* 하단: 입력 패널 (키패드) - 내용에 맞게 자동 조정 */
+.bottom-section {
+  flex: 0 1 auto;
+  padding: 1rem 1.5rem;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.start-button,
+.reset-button {
+  padding: 0.75rem 2rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.start-button {
+  background: #2ecc71;
+  color: white;
+}
+
+.start-button:hover {
+  background: #27ae60;
+  transform: scale(1.05);
+}
+
+.reset-button {
+  background: #e74c3c;
+  color: white;
+}
+
+.reset-button:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+.reset-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.new-record-message {
+  text-align: center;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: clamp(0.875rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  margin: 0.5rem 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

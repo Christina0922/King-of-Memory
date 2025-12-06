@@ -1,0 +1,36 @@
+.brain-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brain-icon {
+  width: 2.55rem; /* 텍스트 높이의 약 85% (3rem * 0.85) */
+  height: 2.55rem;
+  display: block;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .brain-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brain-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+

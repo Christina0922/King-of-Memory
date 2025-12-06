@@ -1,0 +1,174 @@
+.nickname-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nickname-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nickname-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nickname-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.nickname-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nickname-modal-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.nickname-modal-body {
+  padding: 1.5rem;
+}
+
+.nickname-input {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.nickname-input:focus {
+  border-color: #4a90e2;
+}
+
+.nickname-error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.nickname-hint {
+  color: #999;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.nickname-modal-footer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  justify-content: flex-end;
+}
+
+.nickname-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nickname-button.cancel {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.nickname-button.cancel:hover {
+  background: #e0e0e0;
+}
+
+.nickname-button.save {
+  background: #4a90e2;
+  color: white;
+}
+
+.nickname-button.save:hover {
+  background: #357abd;
+}
+
+@media (max-width: 768px) {
+  .nickname-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .nickname-modal-header {
+    padding: 1.25rem;
+  }
+
+  .nickname-modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .nickname-modal-body {
+    padding: 1.25rem;
+  }
+
+  .nickname-modal-footer {
+    padding: 1.25rem;
+    flex-direction: column;
+  }
+
+  .nickname-button {
+    width: 100%;
+  }
+}
+

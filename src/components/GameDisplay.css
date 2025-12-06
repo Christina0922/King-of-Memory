@@ -1,0 +1,220 @@
+.game-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  flex: 0 0 auto;
+}
+
+.display-area {
+  width: 100%;
+  max-width: 90%;
+  min-height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.showing-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  animation: fadeIn 0.3s ease-in;
+  width: 100%;
+  min-height: 8rem;
+}
+
+.element-main {
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  line-height: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.element-nato {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+/* 모드 1: 숫자 → 알파벳 (NATO 단어) 형태 */
+.mode-1-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mode-1-number {
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  font-weight: 700;
+  color: #4a90e2;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.mode-1-arrow {
+  font-size: clamp(1rem, 4vw, 2rem);
+  font-weight: 600;
+  color: #666;
+}
+
+.mode-1-letter {
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  font-weight: 700;
+  color: #50c878;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.mode-1-nato-word {
+  font-size: clamp(0.875rem, 3vw, 1.5rem);
+  font-weight: 600;
+  color: #999;
+  font-style: italic;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.empty-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8rem;
+}
+
+.input-prompt {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: #999;
+  font-weight: 500;
+}
+
+.result-message {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.result-message.correct {
+  color: #2ecc71;
+  background: #d5f4e6;
+}
+
+.result-message.wrong {
+  color: #e74c3c;
+  background: #fadbd8;
+}
+
+.user-input-display {
+  width: 100%;
+  max-width: 90%;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.input-label {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.input-sequence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.input-item {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 600;
+  color: #333;
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  border-radius: 0.5rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.color-block {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 700;
+  padding: 1.5rem 3rem;
+  border-radius: 0.75rem;
+  min-width: 12rem;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in, pulse 0.8s ease-in-out;
+}
+
+.color-red {
+  background: #e74c3c;
+}
+
+.color-yellow {
+  background: #f1c40f;
+  color: #333;
+  text-shadow: none;
+}
+
+.color-blue {
+  background: #3498db;
+}
+
+.color-green {
+  background: #2ecc71;
+}
+
+.color-purple {
+  background: #9b59b6;
+}
+
+.color-white {
+  background: #ecf0f1;
+  color: #333;
+  text-shadow: none;
+  border: 2px solid #bdc3c7;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

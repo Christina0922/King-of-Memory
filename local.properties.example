@@ -1,0 +1,29 @@
+## Android SDK 경로 (자동 생성됨)
+# sdk.dir=C\:\\Android
+
+## 키스토어 개인정보 (반드시 설정 필요 - local.properties에 실제 값 입력)
+# 키스토어 파일 경로 (프로젝트 루트 기준 상대 경로 또는 절대 경로)
+keystore.path=king.jks
+
+# 키스토어 비밀번호
+keystore.password=YOUR_KEYSTORE_PASSWORD
+
+# 키 별칭
+keystore.alias=king
+
+# 키 비밀번호 (키스토어 비밀번호와 동일한 경우 생략 가능)
+keystore.keyPassword=YOUR_KEY_PASSWORD
+
+## 환경 변수로 설정하는 방법:
+# Windows PowerShell:
+# $env:KEYSTORE_PATH="king.jks"
+# $env:KEYSTORE_PASSWORD="your_password"
+# $env:KEYSTORE_ALIAS="king"
+# $env:KEYSTORE_KEY_PASSWORD="your_password"
+#
+# Linux/Mac:
+# export KEYSTORE_PATH="king.jks"
+# export KEYSTORE_PASSWORD="your_password"
+# export KEYSTORE_ALIAS="king"
+# export KEYSTORE_KEY_PASSWORD="your_password"
+

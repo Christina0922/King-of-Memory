@@ -1,0 +1,270 @@
+.input-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* input-box 별칭 추가 */
+.input-box {
+  height: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+}
+
+.input-section h3 {
+  font-size: clamp(0.875rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* 공통 버튼 컨테이너 - 동일한 폭으로 정렬 */
+.button-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.number-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.alphabet-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.nato-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.color-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.input-button {
+  padding: 0;
+  font-size: clamp(0.875rem, 4vw, 1.2rem);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 숫자 버튼 - 부모 크기에 따라 자연스럽게 변화 */
+.num-btn {
+  flex: 1 1 auto;
+  min-width: 2.5rem;
+  max-width: 4rem;
+  aspect-ratio: 1;
+  margin: 0.25rem;
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a90e2;
+  color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.num-btn:hover:not(:disabled) {
+  background: #357abd;
+  transform: scale(1.05);
+}
+
+.num-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* 알파벳 버튼 - 부모 크기에 따라 자연스럽게 변화 */
+.alpha-btn {
+  flex: 1 1 auto;
+  min-width: 2.5rem;
+  max-width: 4rem;
+  aspect-ratio: 1;
+  margin: 0.25rem;
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #50c878;
+  color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.alpha-btn:hover:not(:disabled) {
+  background: #3da05f;
+  transform: scale(1.05);
+}
+
+.alpha-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* 호환성을 위한 기존 클래스명 지원 */
+.number-button {
+  flex: 1 1 auto;
+  min-width: 2.5rem;
+  max-width: 4rem;
+  aspect-ratio: 1;
+  margin: 0.25rem;
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a90e2;
+  color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.number-button:hover:not(:disabled) {
+  background: #357abd;
+  transform: scale(1.05);
+}
+
+.number-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.alphabet-button {
+  flex: 1 1 auto;
+  min-width: 2.5rem;
+  max-width: 4rem;
+  aspect-ratio: 1;
+  margin: 0.25rem;
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #50c878;
+  color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.alphabet-button:hover:not(:disabled) {
+  background: #3da05f;
+  transform: scale(1.05);
+}
+
+.alphabet-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.nato-button {
+  background: #50c878;
+  color: white;
+  font-size: clamp(0.75rem, 3vw, 0.9rem);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  min-width: 8rem;
+}
+
+.nato-button:hover:not(:disabled) {
+  background: #3da05f;
+  transform: scale(1.05);
+}
+
+.nato-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.color-button {
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  min-width: 5rem;
+  min-height: 3rem;
+  max-width: 7.5rem;
+  max-height: 5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.color-빨강 {
+  background: #e74c3c;
+}
+
+.color-노랑 {
+  background: #f1c40f;
+  color: #333;
+  text-shadow: none;
+}
+
+.color-파랑 {
+  background: #3498db;
+}
+
+.color-초록 {
+  background: #2ecc71;
+}
+
+.color-보라 {
+  background: #9b59b6;
+}
+
+.color-흰색 {
+  background: #ecf0f1;
+  color: #333;
+  text-shadow: none;
+  border: 1px solid #bdc3c7;
+}
+
+.color-button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.color-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.input-button:disabled,
+.num-btn:disabled,
+.alpha-btn:disabled,
+.number-button:disabled,
+.alphabet-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
