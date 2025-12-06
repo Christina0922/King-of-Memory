@@ -1,14 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>King of Memory</title>
-    <script type="module" crossorigin src="./index.js"></script>
-    <link rel="stylesheet" crossorigin href="./index.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+    <title>King of Memory</title>
+
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+<div id="root">
+    
+    <!-- ============================
+         ⭐ 닉네임 설정 모달 
+       ============================ -->
+    <div id="nickname-modal" class="nickname-modal-overlay" style="display:none;">
+        <div class="nickname-modal">
+            <div class="nickname-modal-header">
+                <h2>닉네임 설정</h2>
+                <button id="close-nickname-modal" class="nickname-modal-close">×</button>
+            </div>
+            <div class="nickname-modal-body">
+                <input id="nickname-input" type="text" maxlength="20" class="nickname-input" placeholder="닉네임을 입력하세요" />
+                <div id="nickname-error" class="nickname-error"></div>
+                <div class="nickname-hint">※ 특수문자 제외, 1~20자</div>
+            </div>
+            <div class="nickname-modal-footer">
+                <button id="cancel-nickname" class="nickname-button cancel">취소</button>
+                <button id="save-nickname" class="nickname-button save">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================
+         ⭐ 메인 모드 선택 화면 
+       ============================ -->
+    <div id="mode-selection-screen" class="mode-selection">
+        <div class="mode-header">
+            <div class="header-top">
+                <h1 class="app-title">King of Memory</h1>
+                <button id="open-nickname-modal" class="nickname-setting-button">⚙️</button>
+            </div>
+            <p class="app-subtitle">기억력의 왕</p>
+        </div>
+
+        <div class="mode-grid">
+            <!-- 모드 1 -->
+            <div class="mode-card mode-card-1" data-mode="1">
+                <div class="mode-number">모드 1</div>
+                <div class="mode-name">숫자 → 문자</div>
+                <div class="mode-description">숫자와 대문자 알파벳이 교대로 등장</div>
+            </div>
+
+            <!-- 모드 2 -->
+            <div class="mode-card mode-card-2" data-mode="2">
+                <div class="mode-number">모드 2</div>
+                <div class="mode-name">숫자 → 색깔</div>
+                <div class="mode-description">숫자와 색상이 교대로 등장</div>
+            </div>
+
+            <!-- 모드 3 -->
+            <div class="mode-card mode-card-3" data-mode="3">
+                <div class="mode-number">모드 3</div>
+                <div class="mode-name">숫자만</div>
+                <div class="mode-description">숫자만 연속 나열</div>
+            </div>
+
+            <!-- 모드 4 -->
+            <div class="mode-card mode-card-4" data-mode="4">
+                <div class="mode-number">모드 4</div>
+                <div class="mode-name">알파벳만</div>
+                <div class="mode-description">대문자 알파벳만 연속 나열</div>
+            </div>
+        </div>
+
+        <div class="menu-buttons">
+            <button id="open-records" class="menu-button">기록 보기</button>
+            <button id="open-ranking" class="menu-button">랭킹 보기</button>
+        </div>
+    </div>
+
+    <!-- ============================
+         ⭐ 게임 화면 
+       ============================ -->
+    <div id="game-screen" class="game-screen" style="display:none;">
+        <div class="game-header">
+            <button id="back-to-menu" class="back-button">← 뒤로</button>
+            <h2 class="game-title" id="game-title">숫자 → 문자</h2>
+            <div class="header-spacer"></div>
+        </div>
+
+        <div class="game-content">
+
+            <!-- 상단: 점수 -->
+            <div class="top-section">
+                <div class="score-box">
+                    <div class="score-section">
+                        <div class="score-label">현재 점수</div>
+                        <div id="current-score" class="score-value">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 중단: 문제 표시 -->
+            <div class="middle-section">
+                <div id="display-area" class="display-area"></div>
+            </div>
+
+            <!-- 하단: 입력 버튼 패널 -->
+            <div class="bottom-section">
+                <div id="input-panel" class="input-panel"></div>
+
+                <div class="game-controls">
+                    <button id="start-game" class="start-button">시작</button>
+                    <button id="reset-game" class="reset-button" disabled>게임 리셋</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================
+         ⭐ 기록 보기 화면 
+       ============================ -->
+    <div id="records-screen" class="records-screen" style="display:none;">
+        <div class="records-header">
+            <button id="back-from-records" class="back-button">← 뒤로</button>
+            <h2 class="records-title">기록</h2>
+            <div class="header-spacer"></div>
+        </div>
+
+        <div class="records-content">
+
+            <div class="record-cards">
+                <!-- 오늘 최고 기록 -->
+                <div class="record-card">
+                    <div class="record-icon">📅</div>
+                    <div class="record-label" id="label-today">오늘 최고 기록</div>
+
+                    <div class="record-score">
+                        <span id="score-today" class="record-value">0</span>
+                        <span class="record-unit">점</span>
+                    </div>
+                </div>
+
+                <!-- 주간 최고 기록 -->
+                <div class="record-card">
+                    <div class="record-icon">📅</div>
+                    <div class="record-label" id="label-week">주간 최고 기록</div>
+
+                    <div class="record-score">
+                        <span id="score-week" class="record-value">0</span>
+                        <span class="record-unit">점</span>
+                    </div>
+                </div>
+
+                <!-- 전체 최고 기록 -->
+                <div class="record-card">
+                    <div class="record-icon">🏆</div>
+                    <div class="record-label">전체 최고 기록</div>
+
+                    <div class="record-score">
+                        <span id="score-best" class="record-value">0</span>
+                        <span class="record-unit">점</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 설명 박스 -->
+            <div class="record-info">
+                <p>점수는 도달한 최대 패턴 길이입니다.</p>
+                <p>정답 시 패턴 길이가 +1 증가하고, 오답 시 길이가 1로 초기화됩니다.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================
+         ⭐ 랭킹 화면 
+       ============================ -->
+    <div id="ranking-screen" class="ranking-screen" style="display:none;">
+        <div class="ranking-header">
+            <button id="back-from-ranking" class="back-button">← 뒤로</button>
+            <h2 class="ranking-title">랭킹</h2>
+            <div class="header-spacer"></div>
+        </div>
+
+        <div class="ranking-content">
+
+            <div class="type-selector">
+                <button class="type-button active" data-type="today">오늘</button>
+                <button class="type-button" data-type="week">주간</button>
+                <button class="type-button" data-type="all">전체</button>
+            </div>
+
+            <div class="ranking-list">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>순위</th>
+                            <th>닉네임</th>
+                            <th>점수</th>
+                            <th>시간</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body">
+                        <!-- JS가 자동으로 채움 -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
