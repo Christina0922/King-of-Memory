@@ -6,6 +6,113 @@
   background: white;
   border-radius: 0.75rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 50vh; /* 최대 높이 제한 */
+  overflow: hidden; /* 스크롤 없이 */
+}
+
+/* 모드 1 (숫자+알파벳) 전용 스타일 - 화면 비율로 조정 */
+.mode-1-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 0.8vh;
+  padding: 0.8vh 1.2vw;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.mode-1-panel .number-section {
+  flex: 0 0 12vh;
+  padding-bottom: 0.4vh;
+}
+
+.mode-1-panel .number-section h3 {
+  margin-bottom: 0.4vh;
+  font-size: clamp(1.2vh, 2vw, 1.5vh);
+}
+
+.mode-1-panel .alphabet-section {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mode-1-panel .alphabet-section h3 {
+  margin-bottom: 0.4vh;
+  font-size: clamp(1.2vh, 2vw, 1.5vh);
+}
+
+.mode-1-panel .alphabet-grid-4rows {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 모드 2 (숫자+색상) 전용 스타일 */
+.mode-2-panel {
+  max-height: 45vh;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  overflow: visible;
+}
+
+.mode-2-panel .number-section {
+  flex: 0 0 auto;
+  padding-bottom: 0.25rem;
+}
+
+/* 모드 3 (숫자만) 전용 스타일 - 화면 비율로 조정 */
+.mode-3-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 0.5vh;
+  padding: 1vh 1.5vw;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mode-3-panel .number-section {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mode-3-panel .number-section h3 {
+  margin-bottom: 0.5vh;
+  font-size: clamp(1.5vh, 2.5vw, 2vh);
+  flex: 0 0 auto;
+}
+
+.mode-3-panel .number-grid-2rows {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 모드 4 (알파벳만) 전용 스타일 */
+.mode-4-panel {
+  max-height: 45vh;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  overflow: visible;
+}
+
+.mode-4-panel .alphabet-section {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mode-4-panel .alphabet-grid-4rows {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 /* input-box 별칭 추가 */
@@ -44,6 +151,67 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0;
+}
+
+/* 숫자 2줄 레이아웃 (0-4 / 5-9) - 화면 비율로 조정 */
+.number-grid-2rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vh;
+  width: 100%;
+  height: 100%;
+}
+
+.number-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6vw;
+  width: 100%;
+  flex: 1 1 50%;
+  min-height: 0;
+}
+
+.number-row .num-btn {
+  flex: 1 1 18%;
+  min-width: 0;
+  max-width: 20%;
+  aspect-ratio: 1;
+  margin: 0;
+  font-size: clamp(0.85rem, 3.825vw, 1.105rem);
+  font-weight: 700;
+  padding: 0;
+}
+
+/* 알파벳 4줄 레이아웃 (7-7-7-5) - 화면 비율로 조정 */
+.alphabet-grid-4rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vh;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+.alphabet-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4vw;
+  width: 100%;
+  flex: 1 1 25%;
+}
+
+.alphabet-row .alpha-btn {
+  flex: 1 1 13%;
+  min-width: 0;
+  max-width: 14.5%;
+  aspect-ratio: 1;
+  margin: 0;
+  font-size: clamp(1.5vh, 3vw, 2vh);
+  font-weight: 700;
+  padding: 0;
 }
 
 .number-grid {
@@ -101,6 +269,13 @@
   color: white;
   border-radius: 0.5rem;
   transition: all 0.2s;
+  font-weight: 700;
+}
+
+/* 모드 1, 3의 숫자 버튼 (더 크게) - 85% 크기 */
+.number-row .num-btn {
+  font-size: clamp(0.85rem, 3.825vw, 1.105rem);
+  font-weight: 700;
 }
 
 .num-btn:hover:not(:disabled) {
@@ -128,6 +303,13 @@
   color: white;
   border-radius: 0.5rem;
   transition: all 0.2s;
+  font-weight: 700;
+}
+
+/* 모드 1의 알파벳 버튼 (숫자보다 작게) */
+.alphabet-row .alpha-btn {
+  font-size: clamp(0.8rem, 3.5vw, 1rem);
+  font-weight: 700;
 }
 
 .alpha-btn:hover:not(:disabled) {

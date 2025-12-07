@@ -1,7 +1,10 @@
 package com.kingofmemory.app
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         val settings = webView.settings
         settings.javaScriptEnabled = true
         settings.domStorageEnabled = true
+        settings.javaScriptCanOpenWindowsAutomatically = true
         settings.allowFileAccess = true
         settings.allowUniversalAccessFromFileURLs = true
         settings.allowContentAccess = true
@@ -42,7 +46,10 @@ class MainActivity : AppCompatActivity() {
         settings.useWideViewPort = true
         settings.cacheMode = android.webkit.WebSettings.LOAD_NO_CACHE
 
-        // 에러 로그 + 에러 화면 표시
+        // 🚀 WebChromeClient 설정 (JavaScript 상호작용 활성화 - 쿠팡 링크 등)
+        webView.webChromeClient = WebChromeClient()
+
+        // 에러 로그 + 에러 화면 표시 + 쿠팡 링크 처리
         webView.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: android.graphics.Bitmap?) {
                 super.onPageStarted(view, url, favicon)
@@ -54,6 +61,32 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Page finished loading: $url")
             }
 
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                val url = request?.url?.toString() ?: return false
+                
+                // 쿠팡 링크 처리 (coupang:// 스킴 또는 link.coupang.com)
+                if (url.startsWith("coupang://") || url.contains("link.coupang.com")) {
+                    try {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                        Log.d(TAG, "쿠팡 링크 열기: $url")
+                        return true
+                    } catch (e: Exception) {
+                        Log.e(TAG, "쿠팡 링크 열기 실패: ${e.message}")
+                        // 실패 시 브라우저로 열기 시도
+                        try {
+                            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url.replace("coupang://", "https://www.coupang.com/")))
+                            startActivity(browserIntent)
+                            return true
+                        } catch (e2: Exception) {
+                            Log.e(TAG, "브라우저 열기 실패: ${e2.message}")
+                        }
+                    }
+                }
+                
+                return false
+            }
+
             override fun onReceivedError(
                 view: WebView?,
                 request: WebResourceRequest?,
@@ -61,6 +94,10 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val errorMsg = "WebView error: ${error?.description}, URL: ${request?.url}"
                 Log.e(TAG, errorMsg)
+                // 쿠팡 링크 오류는 무시 (외부 앱으로 열리므로)
+                if (request?.url?.toString()?.startsWith("coupang://") == true) {
+                    return
+                }
                 view?.loadData(
                     "<html><body style='padding:20px; font-family:Arial;'><h2>파일 로드 오류</h2><p>index.html을 찾지 못했습니다.</p><p>에러: ${error?.description}</p><p>URL: ${request?.url}</p></body></html>",
                     "text/html",

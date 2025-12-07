@@ -9,10 +9,18 @@ interface RecordsScreenProps {
 
 export const RecordsScreen: React.FC<RecordsScreenProps> = ({ onBack }) => {
   const [record, setRecord] = useState<Record>({ today: 0, weekly: 0, allTime: 0 });
+  const [todayDate, setTodayDate] = useState<string>('');
 
   useEffect(() => {
     const loadedRecord = loadRecord();
     setRecord(loadedRecord);
+    
+    // 오늘 날짜 표시
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    setTodayDate(`${year}.${month}.${day}`);
   }, []);
 
   return (
@@ -26,26 +34,23 @@ export const RecordsScreen: React.FC<RecordsScreenProps> = ({ onBack }) => {
       </div>
 
       <div className="records-content">
+        {todayDate && (
+          <div className="record-date">📅 {todayDate}</div>
+        )}
         <div className="record-cards">
           <div className="record-card">
             <div className="record-icon">📅</div>
-            <div className="record-label">오늘 최고 기록</div>
-            <div className="record-value">{record.today}</div>
-            <div className="record-unit">점</div>
+            <div className="record-label">오늘 최고 기록 : {record.today}점</div>
           </div>
 
           <div className="record-card">
             <div className="record-icon">📆</div>
-            <div className="record-label">주간 최고 기록</div>
-            <div className="record-value">{record.weekly}</div>
-            <div className="record-unit">점</div>
+            <div className="record-label">주간 최고 기록 : {record.weekly}점</div>
           </div>
 
           <div className="record-card">
             <div className="record-icon">🏆</div>
-            <div className="record-label">전체 최고 기록</div>
-            <div className="record-value">{record.allTime}</div>
-            <div className="record-unit">점</div>
+            <div className="record-label">전체 최고 기록 : {record.allTime}점</div>
           </div>
         </div>
 

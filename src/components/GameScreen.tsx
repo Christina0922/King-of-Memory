@@ -93,9 +93,14 @@ export const GameScreen: React.FC<GameScreenProps> = ({ mode, onBack }) => {
               </button>
             )}
             {!isGameActive && pattern.length > 0 && (
-              <button className="start-button" onClick={startGame}>
-                다시 시작
-              </button>
+              <>
+                <button className="start-button" onClick={startGame}>
+                  다시 시작
+                </button>
+                <button className="reset-button" onClick={resetGame}>
+                  게임 리셋
+                </button>
+              </>
             )}
           </div>
         </div>

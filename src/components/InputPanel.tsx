@@ -32,35 +32,87 @@ export const InputPanel: React.FC<InputPanelProps> = ({ mode, onInput, disabled 
   switch (mode) {
     case 1: // 숫자 + 알파벳
       return (
-        <div className="input-panel">
-          <div className="input-section">
+        <div className="input-panel mode-1-panel">
+          <div className="input-section number-section">
             <h3>숫자</h3>
-            <div className="button-row">
-              {NUMBERS.map((num) => (
-                <button
-                  key={num}
-                  className="num-btn"
-                  onClick={() => handleNumberClick(num)}
-                  disabled={disabled}
-                >
-                  {num}
-                </button>
-              ))}
+            <div className="number-grid-2rows">
+              <div className="number-row">
+                {NUMBERS.slice(0, 5).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
+              <div className="number-row">
+                {NUMBERS.slice(5, 10).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="input-section">
+          <div className="input-section alphabet-section">
             <h3>알파벳</h3>
-            <div className="button-row">
-              {ALPHABETS.map((letter) => (
-                <button
-                  key={letter}
-                  className="alpha-btn"
-                  onClick={() => handleAlphabetClick(letter)}
-                  disabled={disabled}
-                >
-                  {letter}
-                </button>
-              ))}
+            <div className="alphabet-grid-4rows">
+              <div className="alphabet-row">
+                {ALPHABETS.slice(0, 7).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(7, 14).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(14, 21).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(21, 26).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -68,20 +120,34 @@ export const InputPanel: React.FC<InputPanelProps> = ({ mode, onInput, disabled 
 
     case 2: // 숫자 + 색상
       return (
-        <div className="input-panel">
-          <div className="input-section">
+        <div className="input-panel mode-2-panel">
+          <div className="input-section number-section">
             <h3>숫자</h3>
-            <div className="button-row">
-              {NUMBERS.map((num) => (
-                <button
-                  key={num}
-                  className="num-btn"
-                  onClick={() => handleNumberClick(num)}
-                  disabled={disabled}
-                >
-                  {num}
-                </button>
-              ))}
+            <div className="number-grid-2rows">
+              <div className="number-row">
+                {NUMBERS.slice(0, 5).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
+              <div className="number-row">
+                {NUMBERS.slice(5, 10).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
           <div className="input-section">
@@ -104,20 +170,34 @@ export const InputPanel: React.FC<InputPanelProps> = ({ mode, onInput, disabled 
 
     case 3: // 숫자만
       return (
-        <div className="input-panel">
-          <div className="input-section">
+        <div className="input-panel mode-3-panel">
+          <div className="input-section number-section">
             <h3>숫자</h3>
-            <div className="button-row">
-              {NUMBERS.map((num) => (
-                <button
-                  key={num}
-                  className="num-btn"
-                  onClick={() => handleNumberClick(num)}
-                  disabled={disabled}
-                >
-                  {num}
-                </button>
-              ))}
+            <div className="number-grid-2rows">
+              <div className="number-row">
+                {NUMBERS.slice(0, 5).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
+              <div className="number-row">
+                {NUMBERS.slice(5, 10).map((num) => (
+                  <button
+                    key={num}
+                    className="num-btn"
+                    onClick={() => handleNumberClick(num)}
+                    disabled={disabled}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -125,20 +205,58 @@ export const InputPanel: React.FC<InputPanelProps> = ({ mode, onInput, disabled 
 
     case 4: // 알파벳만
       return (
-        <div className="input-panel">
-          <div className="input-section">
+        <div className="input-panel mode-4-panel">
+          <div className="input-section alphabet-section">
             <h3>알파벳</h3>
-            <div className="button-row">
-              {ALPHABETS.map((letter) => (
-                <button
-                  key={letter}
-                  className="alpha-btn"
-                  onClick={() => handleAlphabetClick(letter)}
-                  disabled={disabled}
-                >
-                  {letter}
-                </button>
-              ))}
+            <div className="alphabet-grid-4rows">
+              <div className="alphabet-row">
+                {ALPHABETS.slice(0, 7).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(7, 14).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(14, 21).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+              <div className="alphabet-row">
+                {ALPHABETS.slice(21, 26).map((letter) => (
+                  <button
+                    key={letter}
+                    className="alpha-btn"
+                    onClick={() => handleAlphabetClick(letter)}
+                    disabled={disabled}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

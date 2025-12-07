@@ -6,11 +6,11 @@
 }
 
 .game-header {
-  flex: 0 0 auto;
+  flex: 0 0 7vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 1.5vh 3vw;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -48,37 +48,44 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  overflow: hidden;
 }
 
-/* 상단: 점수 영역 - flex-grow로 자동 비율 */
+/* 상단: 점수 영역 - 화면 비율로 조정 */
 .top-section {
-  flex: 0 1 auto;
+  flex: 0 0 10vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem;
+  padding: 1vh 2vw;
 }
 
-/* 중간: 게임 디스플레이 및 컨트롤 - flex-grow로 자동 비율 */
+/* 중간: 게임 디스플레이 및 컨트롤 - 화면 비율로 조정 */
 .middle-section {
-  flex: 1 1 auto;
+  flex: 0 0 18vh;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding: 1rem 1.5rem;
-  overflow-y: auto;
+  padding: 1vh 2vw;
+  overflow: visible;
 }
 
-/* 하단: 입력 패널 (키패드) - 내용에 맞게 자동 조정 */
+/* 하단: 입력 패널 (키패드) - 화면 비율로 조정 */
 .bottom-section {
-  flex: 0 1 auto;
-  padding: 1rem 1.5rem;
+  flex: 1 1 auto;
+  padding: 1vh 2vw;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-controls {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem 0;
+  align-items: center;
+  gap: 2vw;
+  padding: 1.5vh 0;
+  flex: 0 0 auto;
+  min-height: 5vh;
 }
 
 .start-button,
